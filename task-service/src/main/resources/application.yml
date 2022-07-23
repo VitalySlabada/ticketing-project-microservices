@@ -1,9 +1,8 @@
 spring:
   application:
-    name: ticketing-project-rest
+    name: task-service
   profiles:
     active: default
-
   jpa:
     properties:
       hibernate:
@@ -12,7 +11,7 @@ spring:
       ddl-auto: update
     show-sql: true
   datasource:
-    url: jdbc:postgresql://localhost:5432/ticketing-app
+    url: jdbc:postgresql://host.docker.internal:5435/ticketing-app
     username: postgres
     password: admin
     driver-class-name: org.postgresql.Driver
