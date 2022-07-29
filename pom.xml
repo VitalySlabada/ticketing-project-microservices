@@ -13,6 +13,7 @@
         <module>app-client-management</module>
         <module>discovery-service</module>
         <module>gateway-service</module>
+        <module>config-service</module>
     </modules>
 
     <parent>
@@ -123,6 +124,17 @@
                 <artifactId>spring-cloud-sleuth-zipkin</artifactId>
                 <version>${spring-cloud.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-config-server</artifactId>
+                <version>${spring-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-config-client</artifactId>
+                <version>${spring-cloud.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-aop</artifactId>
