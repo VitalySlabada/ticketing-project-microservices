@@ -7,30 +7,37 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
-      routes:
-        - id: user-service
-          uri: lb://user-service
-          predicates:
-            - Path=/cydeo/dev/user/**
-          filters:
-            - RewritePath=/cydeo/dev/user/(?<segment>.*),/$\{segment}
-        - id: project-service
-          uri: lb://project-service
-          predicates:
-            - Path=/cydeo/dev/project/**
-          filters:
-            - RewritePath=/cydeo/dev/project/(?<segment>.*),/$\{segment}
-        - id: task-service
-          uri: lb://task-service
-          predicates:
-            - Path=/cydeo/dev/task/**
-          filters:
-            - RewritePath=/cydeo/dev/task/(?<segment>.*),/$\{segment}
+  main:
+    allow-bean-definition-overriding: true
+  #      routes:
+#        - id: user-service
+#          uri: lb://user-service
+#          predicates:
+#            - Path=/cydeo/dev/user/**
+#          filters:
+#            - RewritePath=/cydeo/dev/user/(?<segment>.*),/$\{segment}
+#        - id: project-service
+#          uri: lb://project-service
+#          predicates:
+#            - Path=/cydeo/dev/project/**
+#          filters:
+#            - RewritePath=/cydeo/dev/project/(?<segment>.*),/$\{segment}
+#        - id: task-service
+#          uri: lb://task-service
+#          predicates:
+#            - Path=/cydeo/dev/task/**
+#          filters:
+#            - RewritePath=/cydeo/dev/task/(?<segment>.*),/$\{segment}
   sleuth:
     sampler:
       probability: 1
   zipkin:
     base-url: http://host.docker.internal:9411
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://host.docker.internal:8080/auth/realms/master/protocol/openid-connect/certs
 
 
 
